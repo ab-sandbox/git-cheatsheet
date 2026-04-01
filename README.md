@@ -71,6 +71,9 @@ git commit --amend --author="ab-sandbox <devmachine@yandex.ru>"
 git push --force
 ```
 
+> ⚠️ Только если коммит еще не используется другими разработчиками (до merge, в feature-ветке / MR / PR). 
+> В общих репозиториях переписывать историю не рекомендуется.
+
 
 ## Отправка на GitHub
 
