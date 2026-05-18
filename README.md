@@ -306,3 +306,90 @@ git show HEAD~2
 - Обычно указывает на последний коммит текущей ветки.
 - `HEAD~1` — предыдущий коммит.
 - `HEAD~2` — коммит на два шага назад.
+
+## Статусы файлов
+
+Команда `git status` показывает состояние файлов в репозитории.
+
+```bash
+git status
+```
+
+### Основные статусы
+
+#### `untracked`
+
+Новый файл, который Git ещё не отслеживает.
+
+#### `staged`
+
+Файл добавлен в индекс (`staging area`) с помощью команды:
+
+```bash
+git add <file>
+```
+
+#### `tracked`
+
+Файл уже находится под контролем Git.
+
+#### `modified`
+
+Файл изменён после последнего коммита.
+
+### Что показывает `git status`
+
+Обычно отображаются только следующие состояния:
+
+- `Changes to be committed` — staged
+- `Changes not staged for commit` — modified
+- `Untracked files` — untracked
+
+### Жизненный цикл файла
+
+```text
+untracked
+    ↓ git add
+staged
+    ↓ git commit
+tracked
+    ↓ изменить файл
+modified
+    ↓ git add
+staged
+    ↓ git commit
+tracked
+```
+
+### Если изменить файл после `git add`
+
+```text
+staged + modified
+```
+
+Это означает:
+
+- одна версия файла уже подготовлена к коммиту;
+- новая версия ещё не добавлена.
+
+Чтобы добавить последние изменения:
+
+```bash
+git add <file>
+```
+
+### Полезные формулы
+
+```text
+untracked + git add = staged
+modified + git add = staged
+staged + git commit = tracked
+```
+
+### Когда рабочая директория чиста
+
+```text
+nothing to commit, working tree clean
+```
+
+Это означает, что нет незакоммиченных изменений.
